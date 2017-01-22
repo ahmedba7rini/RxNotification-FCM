@@ -1,0 +1,65 @@
+apply plugin: 'com.android.library'
+
+buildscript {
+    repositories {
+        jcenter()
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:2.2.3'
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.4'
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:1.5'
+    }
+}
+
+ext {
+    bintrayRepo = 'maven'
+    bintrayName = 'rx-notification-fcm'
+
+    publishedGroupId = 'com.marlonmafra.rxnotification.fcm'
+    libraryName = 'Android - RxNotificatin'
+    artifact = 'rx-notification-fcm'
+
+    libraryDescription = 'Easy way to register, remove and manage notifications using RxJava'
+
+    siteUrl = 'https://github.com/pucamafra/RxNotificationFCM'
+    gitUrl = 'https://github.com/pucamafra/RxNotificationFCM.git'
+
+    libraryVersion = '1.0.0'
+
+    developerId = 'pucamafra'
+    developerName = 'Marlon Mafra'
+    developerEmail = 'pucamafra@gmail.com'
+
+    licenseName = 'The Apache Software License, Version 2.0'
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    allLicenses = ["Apache-2.0"]
+}
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "25.0.2"
+
+    defaultConfig {
+        minSdkVersion 14
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.0.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile 'io.reactivex:rxjava:1.1.4'
+    compile 'com.google.firebase:firebase-core:10.0.1'
+    compile 'com.google.firebase:firebase-messaging:10.0.1'
+    compile "com.google.android.gms:play-services-base:10.0.1"
+}
+
+apply from: 'https://raw.githubusercontent.com/numetriclabz/jcenter/master/installv.gradle'
+apply from: 'https://raw.githubusercontent.com/numetriclabz/jcenter/master/bintrayv.gradle'

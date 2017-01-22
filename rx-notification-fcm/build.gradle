@@ -16,11 +16,11 @@ ext {
     bintrayRepo = 'maven'
     bintrayName = 'rx-notification-fcm'
 
-    publishedGroupId = 'com.marlonmafra.rxnotification.fcm'
-    libraryName = 'Android - RxNotificatin'
+    publishedGroupId = 'com.marlonmafra.rxnotification'
+    libraryName = 'Android - RxNotification for Firebase'
     artifact = 'rx-notification-fcm'
 
-    libraryDescription = 'Easy way to register, remove and manage notifications using RxJava'
+    libraryDescription = 'Easy way to register, remove and manage notifications using RxJava on Firebase'
 
     siteUrl = 'https://github.com/pucamafra/RxNotificationFCM'
     gitUrl = 'https://github.com/pucamafra/RxNotificationFCM.git'

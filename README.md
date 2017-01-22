@@ -1,11 +1,11 @@
 <img width="100" src="./img/RxNotification_icon.png" />
 
-RxNotification
+RxNotification-FCM
 ===============
 
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-RxNotification-brightgreen.svg?style=flat)](http://android-arsenal.com/details/1/3546)
 
-Easy way to register, remove and manage notifications using RxJava
+Easy way to register, remove and manage notifications using RxJava on Firebase
 
 Target platforms
 ---

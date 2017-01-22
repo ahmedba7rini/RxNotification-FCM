@@ -58,7 +58,7 @@ dependencies {
 Getting a token
 
 ```java
-  RxNotification.getToken(getApplicationContext(), R.string.gcm_regId)
+  RxNotification.getToken()
                 .subscribeOn(Schedulers.io())
                 .subscribe(new Observer<String>() {
                     @Override
@@ -76,30 +76,10 @@ Getting a token
                 });
 ```
 
-Removing a token
+Removing instance.
 
 ```java
-RxNotification.removeToken(this, R.string.gcm_regId)
-                .subscribeOn(Schedulers.io())
-                .subscribe(new Observer<Void>() {
-                    @Override
-                    public void onCompleted() {
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                    }
-
-                    @Override
-                    public void onNext(Void mVoid) {
-                    }
-                });
-```
-
-Removing instance. All tokens will be removed
-
-```java
-RxNotification.removeInstance(this)
+RxNotification.removeInstance()
 .               subscribeOn(Schedulers.io())
                 .subscribe(new Observer<Void>() {
                     @Override
@@ -133,47 +113,17 @@ Verify whether the Google play Service is update/installed or not
         }
 ```
 
-If you want you can extends the class RxGcmService. This class will help you to identify whether the app is running or not.
-
-```java
-public class GCMService extends RxGcmService {
-
-    @Override
-    public void onMessageReceived(String from, Bundle data, boolean isAppRunning) {
-        // Do whatever you want here
-    }
-}
-```
-
 Remember that you need to put these code on AndroidManifest.xml
 
 ```xml
 
-   <uses-permission android:name="android.permission.WAKE_LOCK" />
-
-    <permission
-        android:name="<your-package>.permission.C2D_MESSAGE"
-        android:protectionLevel="signature" />
-    <uses-permission android:name="<your-package>.permission.C2D_MESSAGE" />
-    
-    
     <application ....>
 
-        <receiver
-            android:name="com.google.android.gms.gcm.GcmReceiver"
-            android:exported="true"
-            android:permission="com.google.android.c2dm.permission.SEND">
-            <intent-filter>
-                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
-                <category android:name="com.example.pucamafra.rxnotification" />
-            </intent-filter>
-        </receiver>
-
-        <service
-            android:name="com.marlonmafra.rxnotification.sample.GCMService"
+       <service
+            android:name="com.marlonmafra.rxnotification.fcm.sample.GCMService"
             android:exported="false">
             <intent-filter>
-                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
 
